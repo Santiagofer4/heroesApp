@@ -22,7 +22,7 @@ export class HeroPageComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    
+
     this.activatedRoute.params
       .pipe(
         switchMap( ({id}) => this.heroesService.getHeroById(id) )
@@ -33,6 +33,10 @@ export class HeroPageComponent implements OnInit {
         this.hero = hero
         return
       })
+  }
+
+  goBack():void {
+    this.router.navigateByUrl('heroes/list')
   }
 
 }
