@@ -19,6 +19,7 @@ export class AuthService {
     return structuredClone(this.user)
   }
 
+
   login( email: string, password: string ):Observable<User> {
     return this.http.get<User>(`${ this.baseUrl }/users/1`)
       .pipe(
@@ -26,6 +27,7 @@ export class AuthService {
         tap( user => { localStorage.setItem('token', 'asdas.fa3w.ag45a5') })
       )
   }
+
 
   checkAuthentication(): Observable<boolean> {
 
@@ -39,8 +41,8 @@ export class AuthService {
         map( user =>  !!user ),
         catchError( err => of(false) )
       )
-
   }
+
 
   logout(): void {
     this.user = undefined;
